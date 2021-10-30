@@ -24,9 +24,9 @@ Restart semua node dan coba ping google.com. Berikut bukti Loguetown dapat menga
 Luffy ingin menghubungi Franky yang berada di EniesLobby dengan denden mushi. Kalian diminta Luffy untuk membuat website utama dengan mengakses franky.yyy.com dengan alias www.franky.yyy.com pada folder kaizoku.
 
 ### Jawaban
-**Pada EneisLobby**
+**Pada EniesLobby**
 * Edit `/etc/bind/named.conf.local` tambahkan:
-![](img/cap2a.PNG)
+    ![](img/cap2a.PNG)
 * Buat direktori baru bernama `kaizoku`
   ```bash
   mkdir /etc/bind/kaizoku
@@ -78,11 +78,18 @@ Buat juga reverse domain untuk domain utama
   ```
 * Edit `/etc/bind/kaizoku/2.206.192.in-addr.arpa` seperti dibawah ini
   ![](img/cap4b.png)
+* Lalu restart bind9
+  ```bash
+  service bind9 restart
+  ```
+**Pada Loguetown**
+* Kemudian lakukan test menggunakan `host -t PTR 192.206.2.2`
+  ![](img/cap4c.png)
 ## Soal 5
 Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Water7 sebagai DNS Slave untuk domain utama.
 
 ### Jawaban
-**Pada EnisLobby**
+**Pada EniesLobby**
 
 - Edit **/etc/bind/named.conf.local**, menjadi seperti berikut:
   ![](img/img3.PNG)
