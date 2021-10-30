@@ -61,6 +61,7 @@ Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Wat
 - Lalu coba test dengan:
   
 `ping franky.e13.com`
+
 ![](img/img6.PNG)
 
 ## Soal 6
@@ -84,10 +85,39 @@ Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.frank
   
 `service bind9 restart`
 
+**Pada Water7**
+- Edit /etc/bind/named.conf.options, comment dan tambahkan:
+
+![](img/img10.PNG)
+
+- Buat direktori baru bernama sunnygo
+
+`mkdir /etc/bind/sunnygo`
+- Copy db.local ke direktori sunnygo, dan ubah namanya menjadi mecha.franky.e13.com
+
+`cp /etc/bind/db.local /etc/bind/sunnygo/mecha.franky.e13.com`
+
+- Edit **/etc/bind/sunnygo/mecha.franky.e13.com**, menjadi:
+
+![](img/img11.PNG)
+
+- Lalu restart bind9
+  
+`service bind9 restart`
+
+**Pada Loguetown**
+- Lakukan dilakukan test sebagai berikut:
+
+`ping mecha.franky.e13.com
+ping www.mecha.franky.e13.com`
+
+![](img/img12.PNG)
+
 ## Soal 7
 Untuk memperlancar komunikasi Luffy dan rekannya, dibuatkan subdomain melalui Water7 dengan nama general.mecha.franky.yyy.com dengan alias www.general.mecha.franky.yyy.com yang mengarah ke Skypie
 
 ### Jawaban
+
 
 ## Soal 8
 Setelah melakukan konfigurasi server, maka dilakukan konfigurasi Webserver. Pertama dengan webserver www.franky.yyy.com. Pertama, luffy membutuhkan webserver dengan DocumentRoot pada /var/www/franky.yyy.com.
