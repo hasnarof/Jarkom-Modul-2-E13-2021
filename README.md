@@ -27,7 +27,7 @@ Luffy ingin menghubungi Franky yang berada di EniesLobby dengan denden mushi. Ka
 **Pada EniesLobby**
 * Edit `/etc/bind/named.conf.local` tambahkan:
 
-![](img/cap2a.png)
+    ![](img/cap2a.png)
 
 * Buat direktori baru bernama `kaizoku`
 
@@ -43,7 +43,7 @@ Luffy ingin menghubungi Franky yang berada di EniesLobby dengan denden mushi. Ka
 
 * Edit `/etc/bind/kaizoku/franky.e13.com`, tambahkan konfigurasi seperti dibawah ini:
 
-![](img/cap2b.png)
+    ![](img/cap2b.png)
 
 * Lalu restart bind9
 
@@ -55,7 +55,7 @@ Luffy ingin menghubungi Franky yang berada di EniesLobby dengan denden mushi. Ka
 
 * Edit `/etc/resolv.conf` dengan memasukkan IP EniesLobby sebagai nameserver:
 
-![](img/cap2c.png)
+    ![](img/cap2c.png)
 
 * Kemudan lakukan test dengan
 
@@ -64,9 +64,9 @@ Luffy ingin menghubungi Franky yang berada di EniesLobby dengan denden mushi. Ka
   ping www.franky.e13.com
   ```
 
-![](img/cap2d.png)
+    ![](img/cap2d.png)
 
-![](img/cap2e.png)
+    ![](img/cap2e.png)
 
 ## Soal 3
 
@@ -78,7 +78,7 @@ Setelah itu buat subdomain super.franky.yyy.com dengan alias www.super.franky.yy
 
 * Edit `etc/bind/kaizoku/franky.e13.com` seperti gambar dibawah untuk menambahkan alias `www.super` dan subdomain `super`
 
-![](img/cap3a.png)
+    ![](img/cap3a.png)
 
 * Lalu restart bind9
 
@@ -90,11 +90,9 @@ Setelah itu buat subdomain super.franky.yyy.com dengan alias www.super.franky.yy
 
 * Kemudian lakukan test degnan `ping super.franky.e13.com` dan `ping www.super.franky.e13.com`
 
-![](img/cap3b.png)
+    ![](img/cap3b.png)
 
-
-
-![](img/cap3c.png)
+    ![](img/cap3c.png)
 
 ## Soal 4
 
@@ -106,7 +104,7 @@ Buat juga reverse domain untuk domain utama
 
 * Edit `/etc/bind/named.conf.local` seperti dibawah ini
 
-![](img/cap4a.png)
+    ![](img/cap4a.png)
 
 * Copy `db.local` ke direktory `kaizoku` dan diraname menjadi `2.206.192.in-addr.arpa`
 
@@ -116,7 +114,7 @@ Buat juga reverse domain untuk domain utama
 
 * Edit `/etc/bind/kaizoku/2.206.192.in-addr.arpa` seperti dibawah ini
 
-![](img/cap4b.png)
+    ![](img/cap4b.png)
 
 * Lalu restart bind9
 
@@ -129,7 +127,7 @@ Buat juga reverse domain untuk domain utama
 * Kemudian lakukan test menggunakan `host -t PTR 192.206.2.2`
 
 
-![](img/cap4c.png)
+    ![](img/cap4c.png)
 
 ## Soal 5
 Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Water7 sebagai DNS Slave untuk domain utama.
@@ -141,26 +139,26 @@ Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Wat
   ![](img/img3.PNG)
 - Lalu restart bind9
   
-`service bind9 restart`
+    `service bind9 restart`
 - Kemudian stop bind9
 
- `service bind9 stop`
+    `service bind9 stop`
 
 **Pada Water7**
 - Edit **/etc/bind/named.conf.local**
   
-![](img/img4.PNG)
+    ![](img/img4.PNG)
 - Lalu restart bind9
   
 **Pada Loguetown**
 - Edit **/etc/resolv.conf**, tambahkan IP Water7 sebagai nameserver
 
-![](img/img5.PNG)
+    ![](img/img5.PNG)
 - Lalu coba test dengan:
   
-`ping franky.e13.com`
+    `ping franky.e13.com`
 
-![](img/img6.PNG)
+    ![](img/img6.PNG)
 
 ## Soal 6
 Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.franky.yyy.com yang didelegasikan dari EniesLobby ke Water7 dengan IP menuju ke Skypie dalam folder sunnygo
@@ -169,48 +167,48 @@ Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.frank
 **Pada EniesLobby**
 - Edit **/etc/bind/kaizoku/franky.e13.com**, tambahkan:
 
-![](img/img7.PNG)
+    ![](img/img7.PNG)
 
 - Edit **/etc/bind/named.conf.options**, comment dan tambahkan:
 
-![](img/img8.PNG)
+    ![](img/img8.PNG)
 
 - Edit **/etc/bind/named.conf.local**, tambahkan:
 
-![](img/img9.PNG)
+    ![](img/img9.PNG)
 
 - Lalu restart bind9
   
-`service bind9 restart`
+    `service bind9 restart`
 
 **Pada Water7**
 - Edit /etc/bind/named.conf.options, comment dan tambahkan:
 
-![](img/img10.PNG)
+    ![](img/img10.PNG)
 
 - Buat direktori baru bernama sunnygo
 
-`mkdir /etc/bind/sunnygo`
+    `mkdir /etc/bind/sunnygo`
 - Copy db.local ke direktori sunnygo, dan ubah namanya menjadi mecha.franky.e13.com
 
-`cp /etc/bind/db.local /etc/bind/sunnygo/mecha.franky.e13.com`
+    `cp /etc/bind/db.local /etc/bind/sunnygo/mecha.franky.e13.com`
 
 - Edit **/etc/bind/sunnygo/mecha.franky.e13.com**, menjadi:
 
-![](img/img11.PNG)
+    ![](img/img11.PNG)
 
 - Lalu restart bind9
   
-`service bind9 restart`
+    `service bind9 restart`
 
 **Pada Loguetown**
 - Lakukan dilakukan test sebagai berikut:
 
-`ping mecha.franky.e13.com`
+    `ping mecha.franky.e13.com`
 
-`ping www.mecha.franky.e13.com`
+    `ping www.mecha.franky.e13.com`
 
-![](img/img12.PNG)
+    ![](img/img12.PNG)
 
 ## Soal 7
 Untuk memperlancar komunikasi Luffy dan rekannya, dibuatkan subdomain melalui Water7 dengan nama general.mecha.franky.yyy.com dengan alias www.general.mecha.franky.yyy.com yang mengarah ke Skypie
@@ -219,32 +217,32 @@ Untuk memperlancar komunikasi Luffy dan rekannya, dibuatkan subdomain melalui Wa
 **Pada Water7**
 - Edit /etc/bind/sunnygo/mecha.franky.e13.com, tambahkan:
   
-![](img/img13.PNG)
+    ![](img/img13.PNG)
 
 - Lalu restart bind9
 
-`service bind9 restart`
+    `service bind9 restart`
 
 **Pada Loguetown**
 - Lakukan test dengan cara:
 
-`ping general.mecha.franky.e13.com`
+    `ping general.mecha.franky.e13.com`
 
-![](img/img14.PNG)
+    ![](img/img14.PNG)
 
-`ping www.general.mecha.franky.e13.com`
+    `ping www.general.mecha.franky.e13.com`
 
-![](img/img15.PNG)
+    ![](img/img15.PNG)
 
 atau
 
-`host -t A general.mecha.franky.e13.com`
+    `host -t A general.mecha.franky.e13.com`
 
-![](img/img16.PNG)
+    ![](img/img16.PNG)
 
-`host -t A www.general.mecha.franky.e13.com`
+    `host -t A www.general.mecha.franky.e13.com`
 
-![](img/img17.PNG)
+    ![](img/img17.PNG)
 - 
 ## Soal 8
 Setelah melakukan konfigurasi server, maka dilakukan konfigurasi Webserver. Pertama dengan webserver www.franky.yyy.com. Pertama, luffy membutuhkan webserver dengan DocumentRoot pada /var/www/franky.yyy.com.
