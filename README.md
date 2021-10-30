@@ -196,3 +196,8 @@ Dikarenakan Franky juga ingin mengajak temannya untuk dapat menghubunginya melal
 ## Kendala
 ## Pembagian Tugas
 
+|Nama           |Soal                   |
+|:------------:|:---------------------:|
+|Ihsannur Rahman Qalbi|1-2|
+|Fairuz Hasna Rofifah|3-4|
+|Ahmad Aunul Ma`bud|5-7|
