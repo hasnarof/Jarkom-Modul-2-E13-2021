@@ -194,6 +194,8 @@ Dikarenakan Franky juga ingin mengajak temannya untuk dapat menghubunginya melal
 ### Jawaban
 
 ## Kendala
+1. Mengalami kesulitan untuk memberikan alias pada subdomain di soal 3 dan 7.
+2. Kurang teliti saat melakukan config.
 ## Pembagian Tugas
 
 |Nama           |Soal                   |
