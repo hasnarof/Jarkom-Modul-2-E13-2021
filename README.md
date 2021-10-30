@@ -117,8 +117,36 @@ ping www.mecha.franky.e13.com`
 Untuk memperlancar komunikasi Luffy dan rekannya, dibuatkan subdomain melalui Water7 dengan nama general.mecha.franky.yyy.com dengan alias www.general.mecha.franky.yyy.com yang mengarah ke Skypie
 
 ### Jawaban
+**Pada Water7**
+- Edit /etc/bind/sunnygo/mecha.franky.e13.com, tambahkan:
+  
+![](img/img13.PNG)
 
+- Lalu restart bind9
 
+`service bind9 restart`
+
+**Pada Loguetown**
+- Lakukan test dengan cara:
+
+`ping general.mecha.franky.e13.com`
+
+![](img/img14.PNG)
+
+`ping www.general.mecha.franky.e13.com`
+
+![](img/img15.PNG)
+
+atau
+
+`host -t A general.mecha.franky.e13.com`
+
+![](img/img16.PNG)
+
+`host -t A www.general.mecha.franky.e13.com`
+
+![](img/img17.PNG)
+- 
 ## Soal 8
 Setelah melakukan konfigurasi server, maka dilakukan konfigurasi Webserver. Pertama dengan webserver www.franky.yyy.com. Pertama, luffy membutuhkan webserver dengan DocumentRoot pada /var/www/franky.yyy.com.
 
