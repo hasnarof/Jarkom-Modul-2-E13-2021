@@ -108,8 +108,9 @@ Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.frank
 **Pada Loguetown**
 - Lakukan dilakukan test sebagai berikut:
 
-`ping mecha.franky.e13.com
-ping www.mecha.franky.e13.com`
+`ping mecha.franky.e13.com`
+
+`ping www.mecha.franky.e13.com`
 
 ![](img/img12.PNG)
 
