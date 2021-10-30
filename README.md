@@ -54,22 +54,30 @@ Luffy ingin menghubungi Franky yang berada di EniesLobby dengan denden mushi. Ka
 ## Soal 3
 Setelah itu buat subdomain super.franky.yyy.com dengan alias www.super.franky.yyy.com yang diatur DNS nya di EniesLobby dan mengarah ke Skypie
 ### Jawaban
+**Pada EniesLobby**
 * Edit `etc/bind/kaizoku/franky.e13.com` seperti gambar dibawah untuk menambahkan alias `www.super` dan subdomain `super`
   ![](img/cap3a.PNG)
 * Lalu restart bind9
   ```bash
   service bind9 restart
   ```
+**Pada Loguetown**
 * Kemudian lakukan test degnan `ping super.franky.e13.com` dan `ping www.super.franky.e13.com`
   ![](img/cap3b.png)
   ![](img/cap3c.png)
 ## Soal 4
 Buat juga reverse domain untuk domain utama
 ### Jawaban
+**Pada EniesLobby**
 * Edit `/etc/bind/named.conf.local` seperti dibawah ini
   ![](img/cap4a.png)
-* 
-
+* Copy `db.local` ke direktory `kaizoku` dan diraname menjadi `2.206.192.in-addr.arpa`
+  ![](img/.png)
+  ```bash
+  cp /etc/bind/db.local /etc/bind/kaizoku/2.206.192.in-addr.arpa
+  ```
+* Edit `/etc/bind/kaizoku/2.206.192.in-addr.arpa` seperti dibawah ini
+  ![](img/cap4b.png)
 ## Soal 5
 Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Water7 sebagai DNS Slave untuk domain utama.
 
