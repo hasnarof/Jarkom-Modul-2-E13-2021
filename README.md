@@ -34,14 +34,55 @@ Buat juga reverse domain untuk domain utama
 
 
 ## Soal 5
-Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Water7 sebagai DNS Slave untuk domain utama
+Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Water7 sebagai DNS Slave untuk domain utama.
 
 ### Jawaban
+**Pada EnisLobby**
+
+- Edit **/etc/bind/named.conf.local**, menjadi seperti berikut:
+  ![](img/img3.PNG)
+- Lalu restart bind9
+  
+`service bind9 restart`
+- Kemudian stop bind9
+
+ `service bind9 stop`
+
+**Pada Water7**
+- Edit **/etc/bind/named.conf.local**
+  
+![](img/img4.PNG)
+- Lalu restart bind9
+  
+**Pada Loguetown**
+- Edit **/etc/resolv.conf**, tambahkan IP Water7 sebagai nameserver
+
+![](img/img5.PNG)
+- Lalu coba test dengan:
+  
+`ping franky.e13.com`
+![](img/img6.PNG)
 
 ## Soal 6
 Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.franky.yyy.com yang didelegasikan dari EniesLobby ke Water7 dengan IP menuju ke Skypie dalam folder sunnygo
 
 ### Jawaban
+**Pada EniesLobby**
+- Edit **/etc/bind/kaizoku/franky.e13.com**, tambahkan:
+
+![](img/img7.PNG)
+
+- Edit **/etc/bind/named.conf.options**, comment dan tambahkan:
+
+![](img/img8.PNG)
+
+- Edit **/etc/bind/named.conf.local**, tambahkan:
+
+![](img/img9.PNG)
+
+- Lalu restart bind9
+  
+`service bind9 restart`
 
 ## Soal 7
 Untuk memperlancar komunikasi Luffy dan rekannya, dibuatkan subdomain melalui Water7 dengan nama general.mecha.franky.yyy.com dengan alias www.general.mecha.franky.yyy.com yang mengarah ke Skypie
