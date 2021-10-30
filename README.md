@@ -27,7 +27,7 @@ Luffy ingin menghubungi Franky yang berada di EniesLobby dengan denden mushi. Ka
 **Pada EniesLobby**
 * Edit `/etc/bind/named.conf.local` tambahkan:
 
-![](img/cap2a.PNG)
+![](img/cap2a.png)
 
 * Buat direktori baru bernama `kaizoku`
 
@@ -55,7 +55,7 @@ Luffy ingin menghubungi Franky yang berada di EniesLobby dengan denden mushi. Ka
 
 * Edit `/etc/resolv.conf` dengan memasukkan IP EniesLobby sebagai nameserver:
 
-![](img/cap2c.PNG)
+![](img/cap2c.png)
 
 * Kemudan lakukan test dengan
 
@@ -78,7 +78,7 @@ Setelah itu buat subdomain super.franky.yyy.com dengan alias www.super.franky.yy
 
 * Edit `etc/bind/kaizoku/franky.e13.com` seperti gambar dibawah untuk menambahkan alias `www.super` dan subdomain `super`
 
-![](img/cap3a.PNG)
+![](img/cap3a.png)
 
 * Lalu restart bind9
 
@@ -91,6 +91,8 @@ Setelah itu buat subdomain super.franky.yyy.com dengan alias www.super.franky.yy
 * Kemudian lakukan test degnan `ping super.franky.e13.com` dan `ping www.super.franky.e13.com`
 
 ![](img/cap3b.png)
+
+
 
 ![](img/cap3c.png)
 
